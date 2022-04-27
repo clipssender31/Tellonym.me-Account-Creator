@@ -9,7 +9,7 @@ The fastest tellonym.me account creator on Github
 * Install all python packages via "pip install -r requirements.txt"
 * To run the creator.py file, type this in command prompt "python creator.py"
 # Todo
-*Nothing to do at the moment
+* **Nothing to do at the moment**
 # Contacts
 * Discord - Not Sharing on github, can be found in the discord
 * Telegram - @lilclip
