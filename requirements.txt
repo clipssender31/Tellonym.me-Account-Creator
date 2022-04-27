@@ -1,4 +1,0 @@
-captchatools==1.2.1
-fake_useragent==0.1.11
-httpx==0.22.0
-pyfiglet==0.8.post1
