@@ -1,6 +1,6 @@
 The fastest tellonym.me account creator on Github
 # Requirements
-1. **capmonster.cloud, anti-captcha.com or 2captcha.com API key
+1. **capmonster.cloud, anti-captcha.com or 2captcha.com API key**
 2. **Buy cheap 3$ proxies from https://www.webshare.io/?referral_code=vfoze0j60n05 (use my referral for a discount)
 4. **Download the following python packages via "pip install -r requirements.txt"
 # How to use
