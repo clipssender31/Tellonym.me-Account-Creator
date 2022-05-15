@@ -34,7 +34,7 @@ class bcolors:
 
 ua = UserAgent()
 #def RandomUseragent():
-#    return ua.random I Do not reccomend this, heavily reduces success rates.
+#    return ua.random I Do not recommend this, heavily reduces success rates.
 
 
 def SolveCaptcha():
