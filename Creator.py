@@ -100,6 +100,6 @@ if __name__ == "__main__":
     os.system("cls")
     threadAmount = 1 if threadAmount == "" else int(threadAmount)
     threads = []
-    with ThreadPoolExecutor(max_workers=threadAmount) as joiner:
+    with ThreadPoolExecutor(max_workers=threadAmount) as tello:
         for x in range(threadAmount):
-            joiner.submit(register)
+            tello.submit(register)
