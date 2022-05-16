@@ -38,12 +38,12 @@ ua = UserAgent()
 
 
 def SolveCaptcha():
-    solver = captcha_harvesters(solving_site=captchaApi, 
+    captchaToken = captcha_harvesters(solving_site=captchaApi, 
     api_key=f"{captchakey}", 
     sitekey=f"3e48b1d1-44bf-4bc4-a597-e76af6f3a260", 
     captcha_type="hcap", 
     captcha_url="https://tellonym.me/")
-    hcapresolution = solver.get_token() # Gets the hcaptcha token
+    hcapresolution = captchaToken.get_token() # Gets the hcaptcha token
     return hcapresolution
 
 
@@ -72,7 +72,10 @@ def register():
             with open('./Data/usernames.txt', 'r') as u:
                 username = choice(u.readlines()).strip()
             email = username + "@" + mailDomain
-            client = httpx.Client(headers={'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8', 'authority': 'api.tellonym.me', 'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="100", "Microsoft Edge";v="100"','origin': 'https://tellonym.me', 'accept': 'application/json','content-type': 'application/json;charset=utf-8','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','sec-fetch-dest': 'empty','sec-fetch-mode': 'cors','sec-fetch-site': 'same-site','tellonym-client': 'web:0.62.1','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36'}, proxies=f"http://"+GetProxies())
+            client = httpx.Client(
+                headers={'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8', 'authority': 'api.tellonym.me', 'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="100", "Microsoft Edge";v="100"','origin': 'https://tellonym.me', 'accept': 'application/json','content-type': 'application/json;charset=utf-8','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','sec-fetch-dest': 'empty','sec-fetch-mode': 'cors','sec-fetch-site': 'same-site','tellonym-client': 'web:0.62.1','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36'}, 
+                proxies=f"http://"+GetProxies()
+            )
             res = client.post("https://api.tellonym.me/accounts/register", json={'deviceName': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36','deviceType': 'web','lang': 'en','hCaptcha': SolveCaptcha(),'email': email,'password': password,'username': username,'limit': 25,}, timeout=30)
             if res.status_code in [503, 400, 401, 403, 429]:
                 print(f'{bcolors.RED}Failed to Create Account: {res} {bcolors.RESET}')
